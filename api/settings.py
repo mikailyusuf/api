@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '3&lq**ej4e8b8^!a9*79a@(v=a3ry@xg@m+o^8jj59q&t%y2td'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mikail-api.herokuapp.com','127.0.0.1']
 
 # Application definition
 
