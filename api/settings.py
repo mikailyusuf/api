@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from storages.utils import setting
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
@@ -37,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'customers',
     'rest_framework',
+    'rest_framework.authtoken',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -74,6 +78,12 @@ WSGI_APPLICATION = 'api.wsgi.application'
 
 DATABASES = {
     'default': {
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME':'CUSTOMERS',
+        # 'USER':'postgres',
+        # 'PASSWORD':'mikail.kunle',
+        # 'HOST':'localhost',
+        # 'PORT':'5432',
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
@@ -113,4 +123,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+
+#S3 BUCKETS CONFIG
+AWS_ACCESS_KEY_ID = 'AKIAZRJ3FW6Q7DLCOWUT'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'mikailapi'
+
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_S3_REGION_NAME = 'eu-west-2'
+AWS_S3_SIGNATURE_VERSION = 's3v4'
 STATIC_URL = '/static/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
